@@ -1,28 +1,23 @@
-from flask import Flask, request, send_file
+from flask import Flask, render_template, request
 import qrcode
-import io
+import os
 
 app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    qr_path = None
+
     if request.method == "POST":
         url = request.form["url"]
 
         img = qrcode.make(url)
-        buf = io.BytesIO()
-        img.save(buf, format="PNG")
-        buf.seek(0)
 
-        return send_file(buf, mimetype="image/png")
+        os.makedirs("static", exist_ok=True)
+        qr_path = "static/qrcode.png"
+        img.save(qr_path)
 
-    return """
-    <h2>QR Code Generator</h2>
-    <form method="post">
-        <input name="url" placeholder="Enter URL" required>
-        <button type="submit">Generate QR</button>
-    </form>
-    """
+    return render_template("index.html", qr_path=qr_path)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
