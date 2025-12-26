@@ -2,6 +2,10 @@
 
 A lightweight Python script that generates a QR code for any URL you provide.
 
+## 🌐 Live Demo
+👉 https://qr-code-generator-xxxx.onrender.com
+
+
 🚀 Features
 
 Generate QR codes from any text or URL
