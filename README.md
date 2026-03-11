@@ -38,7 +38,7 @@ qr-code-generator/
 
 Clone the repository:
 
-git clone https://github.com/your-username/qr-code-generator.git
+git clone https://github.com/ShivamKumar9935/qr-code-generator.git
 
 
 Navigate to the project folder:
